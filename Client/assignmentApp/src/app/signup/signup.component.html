@@ -1,0 +1,66 @@
+<form [formGroup]="signupForm" (ngSubmit)="signup()">
+
+    <mat-grid-list cols="1" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Signup</mat-card-title>
+                </mat-card-header><br>
+
+                <mat-card-content class="username">
+                    <mat-form-field>
+                        <mat-label>Enter a username</mat-label>
+                        <input matInput type="text" formControlName="username" placeholder="username" maxlength="30"
+                            required />
+
+                        <mat-error *ngIf="signupForm.get('username')?.hasError('required')">
+                            Please enter a username
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('username')?.hasError('minlength')">
+                            Min <strong>7</strong> characters required
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('username')?.hasError('pattern')">
+                            Should have A-Z,a-z,0-9,_ only
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="password">
+                    <mat-form-field>
+                        <mat-label>Enter password</mat-label>
+                        <input matInput type="password" formControlName="password" placeholder="password" required />
+
+                        <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+                            Please enter a password
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+                            Min <strong>7</strong> characters required
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="mail">
+                    <mat-form-field>
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput type="email" formControlName="mail" placeholder="email" required />
+
+                        <mat-error *ngIf="signupForm.get('mail')?.hasError('required')">
+                            Please enter a mail
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.get('mail')?.hasError('pattern')">
+                            Mail should be valid
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="button">
+                    <button mat-raised-button color="accent" [disabled]="signupForm.invalid">signup</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

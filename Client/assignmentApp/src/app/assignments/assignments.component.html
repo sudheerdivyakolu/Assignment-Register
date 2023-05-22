@@ -1,0 +1,39 @@
+<mat-grid-list cols="2">
+    <mat-grid-tile *ngIf="comAssigns | json">
+        <mat-card class="Assigns">
+
+            <mat-card-header>
+                <mat-card-title>Completed assignments</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content *ngFor="let assign of comAssigns">
+                <mat-card>
+                    <a [routerLink]="['/assignments',assign.id]">
+                        <div class="content">
+                            <mat-card-content>{{assign.name}}</mat-card-content>
+                        </div>
+                    </a>
+                </mat-card><br>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngIf="incomAssigns | json as incoms">
+        <mat-card class="Assigns">
+
+            <mat-card-header>
+                <mat-card-title>Incompleted assignments</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content *ngFor="let assign of incomAssigns">
+                <mat-card>
+                    <a [routerLink]="['/assignments',assign.id]">
+                        <mat-card-content class="content">{{assign.name}}</mat-card-content>
+                    </a>
+                </mat-card><br>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

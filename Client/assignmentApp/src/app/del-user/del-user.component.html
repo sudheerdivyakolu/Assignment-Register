@@ -1,0 +1,19 @@
+<mat-card class="delete-card">
+
+    <mat-card-header>
+        <mat-card-title mat-dialog-title>Your account will be permanently deleted!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content mat-dialog-content>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Wanna do it? *^*
+    </mat-card-content>
+    <mat-card-actions>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button [disabled]="disabled" mat-raised-button color="warn" mat-dialog-close (click)=" eradicate()">Eradicate
+            it!
+        </button>&nbsp;&nbsp;&nbsp;
+        <button [disabled]="disabled" mat-raised-button color="accent" mat-dialog-close (click)="goback()">goback
+            *v*</button>
+    </mat-card-actions><br>
+
+</mat-card>

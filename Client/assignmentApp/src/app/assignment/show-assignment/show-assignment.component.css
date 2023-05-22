@@ -1,0 +1,9 @@
+.Assign {
+    width: 25%;
+    height: 70%;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    font-size: large;
+}

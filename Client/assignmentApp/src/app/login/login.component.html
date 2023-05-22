@@ -1,0 +1,51 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <mat-grid-list cols="1" rowHeight="3:1">
+        <mat-grid-tile>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Login</mat-card-title>
+                </mat-card-header><br>
+
+                <mat-card-content class="username">
+                    <mat-form-field>
+                        <mat-label>Enter username</mat-label>
+                        <input matInput type="text" formControlName="username" placeholder="username" maxlength="30"
+                            required />
+
+                        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+                            Please enter a username
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">
+                            Min <strong>7</strong> characters required
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.get('username')?.hasError('pattern')">
+                            Should have A-Z,a-z,0-9,_ only
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="password">
+                    <mat-form-field>
+                        <mat-label>Enter password</mat-label>
+                        <input matInput type="password" formControlName="password" placeholder="password" required />
+
+                        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                            Please enter a password
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+                            Min <strong>7</strong> characters required
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="button">
+                    <button mat-raised-button color="accent" [disabled]="loginForm.invalid">login</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</form>

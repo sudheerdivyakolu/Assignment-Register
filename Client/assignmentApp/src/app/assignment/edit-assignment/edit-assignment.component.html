@@ -1,0 +1,77 @@
+<mat-grid-list cols="1" rowHeight="3:1">
+    <mat-grid-tile>
+        <form [formGroup]="editForm" (ngSubmit)="editAssignment()">
+
+            <mat-card>
+
+                <mat-card-header>
+                    <mat-card-title>Edit Assignment</mat-card-title>
+                </mat-card-header><br>
+
+                <mat-card-content class="name">
+                    <mat-form-field>
+                        <mat-label>Enter assignment name</mat-label>
+                        <input matInput type="text" formControlName="name" placeholder="name" required maxlength="30" />
+
+                        <mat-error *ngIf="editForm.get('name')?.hasError('required')">
+                            Please enter a name
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('name')?.hasError('minlength')">
+                            Min <strong>5</strong> characters required
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="subject">
+                    <mat-form-field>
+                        <mat-label>Enter subject</mat-label>
+                        <input matInput type="text" formControlName="subject" placeholder="subject" required
+                            maxlength="30" />
+
+                        <mat-error *ngIf="editForm.get('subject')?.hasError('required')">
+                            Please enter a subject
+                        </mat-error>
+                        <mat-error *ngIf="editForm.get('subject')?.hasError('minlength')">
+                            Min <strong>5</strong> characters required
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="range">
+                    <mat-form-field>
+                        <mat-label>Enter start and end date</mat-label>
+                        <mat-date-range-input formGroupName="range" [rangePicker]="picker">
+                            <input matStartDate formControlName="startDate" placeholder="Start date">
+                            <input matEndDate formControlName="endDate" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+
+                        <mat-error *ngIf="((editForm.controls['range']).get('startDate')?.hasError('required') 
+                            ||(editForm.controls['range']).get('endDate')?.hasError('required')) 
+                            || (!(editForm.controls['range']).get('startDate')?.hasError('invalidStartDate') 
+                            && !(editForm.controls['range']).get('endDate')?.hasError('invalidEndDate'))">
+                            Enter start and end date</mat-error>
+                        <mat-error *ngIf="((editForm.controls['range']).get('startDate')?.hasError('invalidStartDate') 
+                            || (editForm.controls['range']).get('endDate')?.hasError('invalidEndDate'))
+                            && (!(editForm.controls['range']).get('startDate')?.hasError('required') 
+                            &&!(editForm.controls['range']).get('endDate')?.hasError('required'))">
+                            Invalid dates
+                        </mat-error>
+
+                    </mat-form-field>
+                </mat-card-content>
+
+                <mat-card-content class="button">
+                    <button mat-raised-button color="accent"
+                        [disabled]="editForm.invalid">Edit</button>&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button color="primary" (click)="goback()">goback</button>
+                </mat-card-content>
+
+            </mat-card>
+
+        </form>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,26 @@
+<mat-grid-list cols="1" rowHeight="3:1">
+    <mat-grid-tile>
+        <mat-card *ngIf="Assignment as ass" class="Assign">
+
+            <mat-card-header>
+                <mat-card-title>Assignment</mat-card-title>
+            </mat-card-header><br>
+
+            <mat-card-content>Name : {{ass.name}}</mat-card-content><br>
+            <mat-card-content>Subject : {{ass.subject}}</mat-card-content><br>
+            <mat-card-content>Start date : {{ass.startDate.toString().slice(0, 10)}}</mat-card-content><br>
+            <mat-card-content>End date : {{ass.endDate.toString().slice(0, 10)}}</mat-card-content><br>
+
+            <mat-card-actions *ngIf="ass.deleted===false">
+                <button mat-raised-button color="accent" (click)="edit()">Edit</button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="warn" (click)="del()">Delete</button>
+            </mat-card-actions>
+
+            <mat-card-actions *ngIf="ass.deleted===true">
+                <button mat-raised-button color="warn" (click)="expunge()">expunge</button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="accent" (click)="backup()">back up</button>
+            </mat-card-actions>
+
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,19 @@
+<mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile *ngIf="delAssigns | json">
+        <mat-card class="Assigns">
+
+            <mat-card-header>
+                <mat-card-title>Bin</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content *ngFor="let assign of delAssigns">
+                <mat-card>
+                    <a [routerLink]="['/assignments',assign.id]">
+                        <mat-card-content class="content">{{assign.name}}</mat-card-content>
+                    </a>
+                </mat-card><br>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
